@@ -17,6 +17,10 @@ python-json-logger = "^2.0.7"
 colorlog = "^6.8.2"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+coverage = "^7.4.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

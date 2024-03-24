@@ -17,7 +17,7 @@ backend:
 - poetry
 - docker; nginx
 
-Этапы разработки:
+**Этапы разработки**:
 - [ ] BACKEND
     - [X] Создание схематических моделей базы данных
     - [X] Растановка окружения API
@@ -26,16 +26,25 @@ backend:
         - [x] Подключение cors
         - [x] Подключение логирования
         - [x] Подключение админки
-        - [ ] Подключение ci/cd с github action + flake8
-        - [ ] Подключение pytest + coverage
+        - [x] Подключение инструментов тестирования 
     - [ ] Подключение БД
         - [ ] Подключение postgres
         - [ ] Подключение redis
         - [ ] Подключение elastic
     - [ ] Добавление моделей в API
     - [ ] Написанание routers заглушек
+        - [ ] Keyboards
+        - [ ] Tools
+        - [ ] Accessories
+        - [ ] Brands
     - [ ] Написание сериализаторов под моделей
+    - [ ] Подключение ci/cd с github action + flake8
     - [ ] Написание логики
+        - [ ] Keyboards
+        - [ ] Tools
+        - [ ] Accessories
+        - [ ] Brands
+        - [ ] Логика по покупке товара
     - [ ] Конечное тестирование + coverage
 - [ ] FRONTEND
     - [ ] Верстка страницы на figma
@@ -46,7 +55,7 @@ backend:
     - [ ] Настройка nginx на сервере
     - [ ] Деплой
 
-pages
+## pages
 - main page
 - keyboards
     - custom

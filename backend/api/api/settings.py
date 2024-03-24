@@ -50,6 +50,12 @@ LOGGING = {
     },
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "console"},
+        "django_console": {"class": "logging.StreamHandler"},
+        "root_file": {
+            "class": "logging.FileHandler",
+            "formatter": "file",
+            "filename": f"{BASE_DIR}/logs/info.log",
+        },
         "django_file": {
             "class": "logging.FileHandler",
             "formatter": "file",
@@ -63,13 +69,14 @@ LOGGING = {
     },
     "loggers": {
         "main": {
-            "handlers": ["console"] if DEBUG else ["console", "django_file"],
+            "handlers": ["console"] if DEBUG else ["console", "root_file"],
             "level": "DEBUG" if DEBUG else "INFO",
         },
         "celery": {
             "handlers": ["console", "celery_file"],
             "level": "DEBUG" if DEBUG else "INFO",
         },
+        "django": {"handlers": ["django_file", "django_console"], "level": "INFO"},
     },
 }
 
