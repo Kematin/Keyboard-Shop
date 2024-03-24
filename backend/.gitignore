@@ -2,3 +2,5 @@ venv
 .env
 __pycache__
 poetry.lock
+api/logs/*
+!api/logs/__init__.py

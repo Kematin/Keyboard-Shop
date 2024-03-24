@@ -14,7 +14,7 @@ backend:
 - postgres
 - flake8; github actions
 - pytest; coverage
-- poetry; loguru
+- poetry
 - docker; nginx
 
 Этапы разработки:
@@ -22,10 +22,10 @@ backend:
     - [X] Создание схематических моделей базы данных
     - [X] Растановка окружения API
     - [ ] Настройка drf
-        - [ ] Подключение middleware
-        - [ ] Подключение cors
-        - [ ] Подключение логирования
-        - [ ] Подключение админки
+        - [x] Подключение middleware
+        - [x] Подключение cors
+        - [x] Подключение логирования
+        - [x] Подключение админки
         - [ ] Подключение ci/cd с github action + flake8
         - [ ] Подключение pytest + coverage
     - [ ] Подключение БД

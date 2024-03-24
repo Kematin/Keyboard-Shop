@@ -1,11 +1,13 @@
 from pathlib import Path
 
-from api.config import config
+import colorlog
+
+from api.config import CustomJsonFormatter, config
 
 SECRET_KEY = config.SECRET_KEY
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config.DEBUG
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config.ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -27,6 +29,49 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "{log_color} [ {filename} {funcName} {levelname} ] {message}",
+            "log_colors": {
+                "DEBUG": "bold_black",
+                "INFO": "cyan",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red",
+            },
+            "style": "{",
+        },
+        "file": {"()": CustomJsonFormatter},
+    },
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "console"},
+        "django_file": {
+            "class": "logging.FileHandler",
+            "formatter": "file",
+            "filename": f"{BASE_DIR}/logs/django_info.log",
+        },
+        "celery_file": {
+            "class": "logging.FileHandler",
+            "formatter": "file",
+            "filename": f"{BASE_DIR}/logs/celery_info.log",
+        },
+    },
+    "loggers": {
+        "main": {
+            "handlers": ["console"] if DEBUG else ["console", "django_file"],
+            "level": "DEBUG" if DEBUG else "INFO",
+        },
+        "celery": {
+            "handlers": ["console", "celery_file"],
+            "level": "DEBUG" if DEBUG else "INFO",
+        },
+    },
+}
 
 ROOT_URLCONF = "api.urls"
 

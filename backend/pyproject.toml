@@ -12,6 +12,9 @@ djangorestframework = "^3.15.0"
 pydantic = "^2.6.4"
 pydantic-settings = "^2.2.1"
 python-dotenv = "^1.0.1"
+loguru = "^0.7.2"
+python-json-logger = "^2.0.7"
+colorlog = "^6.8.2"
 
 
 [build-system]
